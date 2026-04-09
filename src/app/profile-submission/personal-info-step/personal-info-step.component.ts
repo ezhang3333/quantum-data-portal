@@ -9,6 +9,12 @@ import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 })
 export class PersonalInfoStepComponent {
   formGroup = input.required<FormGroup>();
+
+  professionTypes = [
+    'Scientist',
+    'Engineer',
+    'Entrepreneur',
+  ];
   headshotPreviewUrl = input<string | null>(null);
   videoPreviewUrl = input<string | null>(null);
 

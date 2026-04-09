@@ -68,6 +68,18 @@
     </div>
 
     <div class="form-group">
+      <label for="profession">Profession *</label>
+      <select id="profession" formControlName="profession">
+        @for (type of professionTypes; track type) {
+          <option [value]="type">{{ type }}</option>
+        }
+      </select>
+      @if (formGroup().get('profession')?.touched && formGroup().get('profession')?.hasError('required')) {
+        <div class="error-message">Profession is required.</div>
+      }
+    </div>
+
+    <div class="form-group">
       <label for="bio">Short Bio *</label>
       <textarea id="bio" formControlName="bio" placeholder="A 2-3 sentence summary of your research focus and background..." rows="3"></textarea>
       <div class="char-count" [class.over]="bioLength > 300">{{ bioLength }} / 300</div>

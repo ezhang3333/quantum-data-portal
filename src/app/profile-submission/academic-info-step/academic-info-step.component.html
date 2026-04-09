@@ -4,7 +4,6 @@
     <div class="form-group">
       <label for="educationLevel">Level of Education *</label>
       <select id="educationLevel" formControlName="educationLevel">
-        <option value="" disabled>Select your level</option>
         @for (level of educationLevels; track level) {
           <option [value]="level">{{ level }}</option>
         }

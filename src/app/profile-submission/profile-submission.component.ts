@@ -23,6 +23,7 @@ export interface Profile {
   field_of_study: string | null;
   publications: string | null;
   additional_info: string | null;
+  profession: string;
 }
 
 @Component({
@@ -56,6 +57,7 @@ export class ProfileSubmissionComponent implements OnDestroy {
         validators: [Validators.required, Validators.maxLength(300)],
       }),
       website: new FormControl('', { nonNullable: true, validators: [optionalUrlValidator] }),
+      profession: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
       video: new FormControl<File | null>(null, { validators: [Validators.required] }),
     }),
     academic: new FormGroup({
@@ -156,6 +158,7 @@ export class ProfileSubmissionComponent implements OnDestroy {
           field_of_study: this.profileForm.controls.academic.controls.fieldOfStudy.value,
           publications: this.profileForm.controls.work.controls.publications.value,
           additional_info: this.profileForm.controls.work.controls.additionalInfo.value || null,
+          profession: this.profileForm.controls.personal.controls.profession.value,
         };
 
         await this.supabase.upsertProfile(profile);
