@@ -1,0 +1,189 @@
+.login-page {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+// ── Left Panel: Login with gradient ──
+
+.login-panel {
+  flex: 0 0 40%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    160deg,
+    rgba(10, 22, 40, 0.95) 0%,
+    rgba(14, 30, 53, 0.92) 20%,
+    rgba(19, 41, 75, 0.88) 40%,
+    rgba(50, 30, 20, 0.82) 60%,
+    rgba(120, 45, 20, 0.76) 80%,
+    rgba(232, 74, 39, 0.65) 100%
+  );
+
+  // Radial glow for depth
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse at 30% 30%,
+        rgba(19, 41, 75, 0.2) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse at 70% 80%,
+        rgba(232, 74, 39, 0.12) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
+  }
+
+  // Subtle border on the right edge
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(232, 74, 39, 0.25) 30%,
+      rgba(255, 111, 66, 0.15) 70%,
+      transparent
+    );
+    pointer-events: none;
+  }
+}
+
+.login-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 380px;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+// ── Branding ──
+
+.brand {
+  text-align: center;
+}
+
+.login-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #E84A27, #FF6F42, #FFa060);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+// ── OAuth Buttons ──
+
+.oauth-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.oauth-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  backdrop-filter: blur(12px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(232, 74, 39, 0.35);
+    box-shadow: 0 4px 20px rgba(232, 74, 39, 0.15);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.oauth-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.oauth-disclaimer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: -4px;
+}
+
+// ── Footer ──
+
+.login-footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+// ── Right Panel: Illinois Image ──
+
+.image-panel {
+  flex: 0 0 60%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(8, 14, 14, 0.4) 0%,
+    transparent 30%
+  );
+  pointer-events: none;
+}
